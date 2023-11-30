@@ -1,0 +1,17 @@
+.main-layout {
+  display: grid;
+  grid-template-columns: 51px 1fr 51px;
+  /* grid-template-rows: 69px; */
+}
+
+.main-layout > .full {
+  grid-column: 1 / -1;
+}
+.main-layout > *:not(.full) {
+  grid-column: 2;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

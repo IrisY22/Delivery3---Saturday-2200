@@ -1,0 +1,11 @@
+footer {
+  height: 210px;
+}
+
+.main-footer {
+  text-align: center;
+}
+
+footer small {
+  color: var(--clrPrimary1);
+}

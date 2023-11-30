@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: monstserrat;
+  font-size: 1.25rem;
+  background-color: var(--clrPrimary-3);
+}
+
+body {
+  margin: 0;
+}
+
+header,
+footer {
+  background-color: var(--clrPrimaryBase);
+}
+
+.logo {
+  color: var(--clrPrimary-2);
+  font-family: monstserratBold;
+}

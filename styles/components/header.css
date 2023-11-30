@@ -1,0 +1,8 @@
+header {
+  height: var(--header-height);
+  padding-inline: var(--layout-margin);
+}
+
+header .logo {
+  /* margin-left: var(--layout-margin); */
+}

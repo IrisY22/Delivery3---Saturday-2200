@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/8fcc4dc398.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Meme Generator</title>
+  </head>
+  <body class="main-layout" onload="onInit()">
+    <header class="main-header full">
+      <div class="flex space-between align-center">
+        <h2 class="logo">memegen</h2>
+        <nav class="main-nav">
+          <ul class="main-nav-list flex row clean-list">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="search-section full">
+      <input type="text" id="search" placeholder="Enter search keyword 🔍" />
+    </section>
+
+    <main class="main-page">
+      <div class="gallery">
+        <canvas
+          id="meme-canvas"
+          width="1203"
+          height="934"
+          style="outline: 1px solid green"
+          onclick="drawRect(event)"
+        ></canvas>
+      </div>
+
+      <div class="meme-editor" hidden></div>
+    </main>
+
+    <article class="about full">
+      <section class="developer-details">
+        <h3>Iris Yatskaer</h3>
+        <p>A student in the bootcamp of Coding Academy</p>
+      </section>
+      <nav class="footer-nav">
+        <ul class="article-nav-list flex row clean-list">
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-behance"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </article>
+
+    <footer class="main-footer full">
+      <h3 class="logo">memegen</h3>
+      <small>© All Rights Reserved 2023</small>
+    </footer>
+
+    <script src="js/services/meme.util.service.js"></script>
+    <script src="js/services/meme.storage.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.search-section {
+  padding-block: 35px;
+  background-color: var(--clrPrimary-2);
+}
+
+section input {
+  margin-left: var(--layout-margin);
+  font-size: 0.9em;
+  height: 28px;
+  border: none;
+  border-bottom: solid 3px var(--clrPrimary2);
+}
+
+.about {
+  text-align: center;
+}

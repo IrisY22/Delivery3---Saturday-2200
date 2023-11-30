@@ -1,0 +1,17 @@
+:root {
+  --clrPrimary2: #040a2c; /* hover on header links */
+  --clrPrimary1: RGBA(255, 255, 255, 1); /* search & developer BGC*/
+  --clrPrimaryBase: RGBA(255, 127, 0, 1); /* header & footer BGC*/
+  --clrPrimary-1: #000000; /* font color */
+  --clrPrimary-2: #ffffff; /* font logo color*/
+  --clrPrimary-3: RGBA(227, 227, 227, 1); /* gallery BGC */
+
+  /* layout  */
+
+  --header-height: 69px;
+  --layout-margin: 50px;
+
+  /* --l: 1200px;
+  --m: 800px;
+  --s: 600px; */
+}
