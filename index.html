@@ -30,12 +30,17 @@
 
     <main class="main-page">
       <div class="gallery">
+        <input
+          type="text"
+          id="description"
+          placeholder="Enter meme description"
+          onchange="setLineTxt(this)"
+        />
         <canvas
           id="meme-canvas"
           width="1203"
           height="934"
           style="outline: 1px solid green"
-          onclick="drawRect(event)"
         ></canvas>
       </div>
 
