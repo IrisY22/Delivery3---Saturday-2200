@@ -15,3 +15,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 } */
+
+.meme-editor {
+  grid-template-columns: 1fr 1fr;
+}
+
+.meme-editor .icon {
+  width: 40px;
+  height: 40px;
+}
