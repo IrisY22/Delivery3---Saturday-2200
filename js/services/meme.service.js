@@ -5,7 +5,6 @@ var gMemes = [];
 var gMeme;
 
 var gColor = "black";
-var gLineIdx = 0;
 
 function getMeme() {
   return gMeme;
@@ -30,7 +29,12 @@ function getImgs() {
 }
 
 function setLineTxt(elDescriprion) {
-  gMeme.lines[gLineIdx].txt = elDescriprion.value;
+  var txt = elDescriprion.value;
+  if (!txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = "Enter your text";
+  } else {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+  }
 
   renderMeme(gImg);
 }
@@ -41,47 +45,85 @@ function getColor() {
 
 function changeColor(color) {
   gColor = color;
+  gMeme.lines[gMeme.selectedLineIdx].color = gColor;
   renderMeme(getImg());
 }
 
 function increaseFont() {
-  gMeme.lines[0].size += 2;
+  gMeme.lines[gMeme.selectedLineIdx].size += 2;
   renderMeme(getImg());
 }
 
 function decreaseFont() {
-  gMeme.lines[0].size -= 2;
+  gMeme.lines[gMeme.selectedLineIdx].size -= 2;
   renderMeme(getImg());
 }
 
 function addLine(elDescriprion) {
-  var txt = elDescriprion.value;
-  if (!txt) return;
+  var txt = "Enter your text";
+  if (!txt || gMeme.lines.length === 3) return;
   var line = {
     txt,
     size: 50,
     color: getColor(),
+    isSelected: false,
+    location: {
+      x: 250,
+      y: 200 + gMeme.lines[gMeme.lines.length - 1].location.y,
+    },
   };
   gMeme.lines.push(line);
+
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+  gMeme.selectedLineIdx = gMeme.lines.length - 1;
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+  elDescriprion.value = "";
   renderMeme(getImg());
 }
 
 function switchLine(elDescriprion) {
-  if (gLineIdx === gMeme.lines.length - 1) {
-    gLineIdx = 0;
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+  if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+    gMeme.selectedLineIdx = 0;
   } else {
-    gLineIdx++;
+    gMeme.selectedLineIdx++;
   }
-  elDescriprion.value = gMeme.lines[gLineIdx].txt;
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+  elDescriprion.value = gMeme.lines[gMeme.selectedLineIdx].txt;
+  renderLines(getImg());
+}
+
+function setSelectedLine(idx) {
+  if (idx === -1) {
+    renderMeme(getImg());
+    return;
+  }
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+  gMeme.selectedLineIdx = idx;
+  const elDescriprion = document.getElementById("description");
+
+  gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+  elDescriprion.value = gMeme.lines[gMeme.selectedLineIdx].txt;
+  renderMeme(getImg());
 }
 
 // Private functions
 
 function _createImgs() {
   gImgs = [
-    _createImg("img/2.jpg", ["cute", "puppy"]),
-    _createImg("img/16.jpg", ["funny", "x-man"]),
+    _createImg("img/1.jpg", ["cute", "puppy"]),
+    _createImg("img/2.jpg", ["funny", "trump"]),
+    _createImg("img/3.jpg", ["funny", "x-man"]),
+    _createImg("img/4.jpg", ["funny", "x-man"]),
+    _createImg("img/5.jpg", ["funny", "x-man"]),
     _createImg("img/6.jpg", ["funny", "x-man"]),
+    _createImg("img/7.jpg", ["funny", "x-man"]),
+    _createImg("img/8.jpg", ["funny", "x-man"]),
+    _createImg("img/9.jpg", ["funny", "x-man"]),
+    _createImg("img/10.jpg", ["funny", "x-man"]),
+    _createImg("img/11.jpg", ["funny", "x-man"]),
+    _createImg("img/12.jpg", ["funny", "x-man"]),
+    _createImg("img/13.jpg", ["funny", "x-man"]),
   ];
 }
 
@@ -105,9 +147,14 @@ function _createMeme(selectedImgId) {
     selectedLineIdx: 0,
     lines: [
       {
-        txt: "",
+        txt: "Enter your text",
         size: 50,
-        color: "blue",
+        color: "black",
+        isSelected: false,
+        location: {
+          x: 250,
+          y: 50,
+        },
       },
     ],
   };

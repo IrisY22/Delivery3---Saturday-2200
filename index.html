@@ -25,7 +25,7 @@
     </header>
 
     <section class="search-section full">
-      <input type="text" id="search" placeholder="Enter search keyword 🔍" />
+      <input type="search" id="search" placeholder="Enter search keyword 🔍" />
     </section>
 
     <main class="main-page">
@@ -39,20 +39,43 @@
         style="outline: 1px solid green"
         ></canvas>
 
-        <form class="frmUserDesign" >
-          <button class="switch-lines" onclick="onSwitchLine()"> <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon-decrease-font"></button>
-          <button class="add-line" onclick="onAddLine()"> <img class="icon" src="ICONS/add.png" alt="Icon-add-line"></button>
-          <button class="increase-font-btn" onclick="onIncreaseFont()"> <img class="icon" src="ICONS/increase font - icon.png" alt="Icon-increase-font"></button>
-          <button class="decrease-font-btn" onclick="onDecreaseFont()"> <img class="icon" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font"></button>
-          <button> 
-            <img class="icon" src="ICONS/paint-board-and-brush.png" alt="Icon-paint-board">
+        <section class="userDesign" >
+          
+          <img class="icon switch-lines" onclick="onSwitchLine()" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon-decrease-font">
+          <img class="icon add-line" onclick="onAddLine()" src="ICONS/add.png" alt="Icon-add-line">
+          <img class="icon trash-btn"  onclick="onRemoveLine()" src="ICONS/trash.png" alt="Icon-trash-line">
+          <img class="icon increase-font-btn"  onclick="onIncreaseFont()" src="ICONS/increase font - icon.png" alt="Icon-increase-font">
+          <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">
+          <img class="icon align-left-btn"  onclick="onAlignTxt()" src="ICONS/align-to-left.png" alt="Icon-align-left-btn">
+          <img class="icon align-center-btn"  onclick="onAlignTxt()" src="ICONS/center-text-alignment.png" alt="Icon-align-center-btn">
+          <img class="icon align-right-btn"  onclick="onAlignTxt()" src="ICONS/align-to-right.png" alt="Icon-align-right-btn">
+          <img class="icon stoke-font-btn"  onclick="onStrokeFont()" src="ICONS/text stroke.png" alt="Icon-stroke-font">
+
+          <!-- <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">   -->
+          
+          <!-- <img type="color"  onchange="setTxtColor(this)" class="icon" src="ICONS/paint-board-and-brush.png" alt="Icon-paint-board">
           <input
           type="color"
           id="txtColor"
-          form="frmUserDesign"
+          
           onchange="setTxtColor(this)"
-          />
-        </button>
+          /> -->
+
+          <img
+  type="color"
+  class="icon paint-board"
+  src="ICONS/paint-board-and-brush.png"
+  alt="Icon-paint-board"
+  onclick="openColorPicker()"
+/>
+
+<input
+  type="color"
+  id="txtColor"
+  onchange="setTxtColor(this)"
+  style="display: none;"
+  />
+        
         
         
         <input
@@ -61,14 +84,23 @@
           placeholder="Enter meme description"
           onkeyup="setLineTxt(this)"
         />
+
         <a
           href="#"
-          class="btn"
+          class="download-link"
           onclick="downloadImg(this)"
           download="my-img.jpg"
           >Download</a
         >
-      </form>
+
+        <a
+          href="#"
+          class="share-link"
+          onclick="downloadImg(this)"
+          download="my-img.jpg"
+          >Share</a
+        >
+      </section>
       </div>
 
     </main>

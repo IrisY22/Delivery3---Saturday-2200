@@ -4,7 +4,6 @@ var gCtx;
 var elDescriprion = document.getElementById("description");
 
 function onImgselect(id) {
-  addEventListener();
   const elMemeEditor = document.querySelector(".meme-editor");
   elMemeEditor.style.display = "grid";
 
@@ -13,41 +12,67 @@ function onImgselect(id) {
 
   gElCanvas = document.getElementById("meme-canvas");
   gCtx = gElCanvas.getContext("2d");
+  onAddEventListener();
 
   var img = getImgById(id);
   renderMeme(img);
 }
 
 function renderMeme(imgData) {
-  const memeData = getMemeById(imgData.id);
   var img = new Image();
 
   img.onload = function () {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 
-    var lines = memeData.lines;
-    var y = 50;
-
-    lines.map((line) => {
-      gCtx.font = `${line.size + "px"} serif`;
-      gCtx.fillStyle = gColor;
-      gCtx.textAlign = "center";
-      gCtx.fillText(line.txt, gElCanvas.width / 2, y);
-      y += 50;
-    });
+    renderLines(imgData);
   };
 
   img.src = imgData.url;
 }
 
-function addEventListener() {
-  // const input = document.getElementById("description");
-  // console.log("jnu");
-  // input.addEventListener("keypress", setLineTxt(input));
+function renderLines(imgData) {
+  const memeData = getMemeById(imgData.id);
+  var lines = memeData.lines;
+
+  lines.map((line) => {
+    gCtx.font = `${line.size + "px"} serif`;
+
+    gCtx.textAlign = "center";
+    if (line.isSelected) {
+      onMarkLine(line);
+    }
+    gCtx.fillStyle = line.color;
+    gCtx.fillText(line.txt, line.location.x, line.location.y);
+  });
+}
+
+function onAddEventListener() {
+  gElCanvas.addEventListener("click", function (event) {
+    var mouseX = event.clientX - gElCanvas.getBoundingClientRect().left;
+    var mouseY = event.clientY - gElCanvas.getBoundingClientRect().top;
+
+    const lines = getMeme().lines;
+    var currLine = lines.find((line) => {
+      var textWidth = gCtx.measureText(line.txt).width / 2;
+      if (
+        mouseX >= line.location.x - textWidth &&
+        mouseX <= line.location.x + textWidth &&
+        mouseY >= line.location.y - line.size &&
+        mouseY <= line.location.y
+      ) {
+        return line;
+      }
+    });
+    setSelectedLine(lines.indexOf(currLine));
+  });
 }
 
 function setTxtColor(elColor) {
   changeColor(elColor.value);
+}
+
+function openColorPicker() {
+  document.getElementById("txtColor").click();
 }
 
 function onIncreaseFont(elfontSize) {
@@ -69,4 +94,16 @@ function downloadImg(elLink) {
 
 function onSwitchLine() {
   switchLine(elDescriprion);
+}
+
+function onMarkLine(line) {
+  var textWidth = gCtx.measureText(line.txt).width;
+  var x = line.location.x - textWidth / 2;
+  var y = line.location.y - line.size;
+
+  var height = line.size;
+
+  gCtx.fillStyle = "rgba(150, 150, 150, 0.5)";
+  gCtx.lineWidth = 2;
+  gCtx.fillRect(x, y, textWidth, height + 20);
 }
