@@ -32,12 +32,14 @@
       <div class="gallery"></div>
 
       <div class="meme-editor" hidden>
+        <section class="canvas-container">
         <canvas
         id="meme-canvas"
         width="500"
-        height="500"
-        style="outline: 1px solid green"
+       
+        style="outline: 1px solid rgb(128, 0, 0)"
         ></canvas>
+      </section>
 
         <section class="userDesign" >
           
@@ -46,9 +48,9 @@
           <img class="icon trash-btn"  onclick="onRemoveLine()" src="ICONS/trash.png" alt="Icon-trash-line">
           <img class="icon increase-font-btn"  onclick="onIncreaseFont()" src="ICONS/increase font - icon.png" alt="Icon-increase-font">
           <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">
-          <img class="icon align-left-btn"  onclick="onAlignTxt()" src="ICONS/align-to-left.png" alt="Icon-align-left-btn">
-          <img class="icon align-center-btn"  onclick="onAlignTxt()" src="ICONS/center-text-alignment.png" alt="Icon-align-center-btn">
-          <img class="icon align-right-btn"  onclick="onAlignTxt()" src="ICONS/align-to-right.png" alt="Icon-align-right-btn">
+          <img class="icon align-left-btn"  onclick="onAlignLeft()" src="ICONS/align-to-left.png" alt="Icon-align-left-btn">
+          <img class="icon align-center-btn"  onclick="onAlignCenter()" src="ICONS/center-text-alignment.png" alt="Icon-align-center-btn">
+          <img class="icon align-right-btn"  onclick="onAlignRight()" src="ICONS/align-to-right.png" alt="Icon-align-right-btn">
           <img class="icon stoke-font-btn"  onclick="onStrokeFont()" src="ICONS/text stroke.png" alt="Icon-stroke-font">
 
           <!-- <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">   -->

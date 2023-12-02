@@ -3,6 +3,7 @@ var gImgs = [];
 var gImg;
 var gMemes = [];
 var gMeme;
+var gLine;
 
 var gColor = "black";
 
@@ -30,6 +31,9 @@ function getImgs() {
 
 function setLineTxt(elDescriprion) {
   var txt = elDescriprion.value;
+  if (gMeme.lines.length === 0) {
+    addLine(elDescriprion);
+  }
   if (!txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = "Enter your text";
   } else {
@@ -69,16 +73,21 @@ function addLine(elDescriprion) {
     isSelected: false,
     location: {
       x: 250,
-      y: 200 + gMeme.lines[gMeme.lines.length - 1].location.y,
+      y: setLocation(),
     },
+    font: "impact",
   };
   gMeme.lines.push(line);
-
+  gLine = line;
   gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
   gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
   elDescriprion.value = "";
   renderMeme(getImg());
+}
+
+function setLocation() {
+  return 200 + gMeme.lines[gMeme.lines.length - 1].location.y;
 }
 
 function switchLine(elDescriprion) {
@@ -88,9 +97,11 @@ function switchLine(elDescriprion) {
   } else {
     gMeme.selectedLineIdx++;
   }
+  gLine = gMeme.lines[gMeme.selectedLineIdx];
   gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
   elDescriprion.value = gMeme.lines[gMeme.selectedLineIdx].txt;
-  renderLines(getImg());
+
+  renderMeme(getImg());
 }
 
 function setSelectedLine(idx) {
@@ -104,9 +115,26 @@ function setSelectedLine(idx) {
 
   gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
   elDescriprion.value = gMeme.lines[gMeme.selectedLineIdx].txt;
+  gLine = gMeme.lines[gMeme.selectedLineIdx];
   renderMeme(getImg());
 }
 
+function getLine() {
+  return gLine;
+}
+
+function removeLine() {
+  if (gMeme.lines.length === 1) {
+    const elDescriprion = document.getElementById("description");
+    elDescriprion.value = "";
+    gMeme.lines[0].txt = "";
+  } else {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    gMeme.selectedLineIdx = 0;
+    gLine = null;
+  }
+  renderMeme(gImg);
+}
 // Private functions
 
 function _createImgs() {
@@ -155,6 +183,7 @@ function _createMeme(selectedImgId) {
           x: 250,
           y: 50,
         },
+        font: "impact",
       },
     ],
   };

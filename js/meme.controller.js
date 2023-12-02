@@ -22,6 +22,7 @@ function renderMeme(imgData) {
   var img = new Image();
 
   img.onload = function () {
+    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width;
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 
     renderLines(imgData);
@@ -35,12 +36,16 @@ function renderLines(imgData) {
   var lines = memeData.lines;
 
   lines.map((line) => {
-    gCtx.font = `${line.size + "px"} serif`;
+    gCtx.font = `${line.size + "px"} ${line.font}`;
 
     gCtx.textAlign = "center";
     if (line.isSelected) {
       onMarkLine(line);
     }
+    gCtx.strokeStyle = "white";
+    gCtx.lineWidth = 5;
+    gCtx.strokeText(line.txt, line.location.x, line.location.y);
+
     gCtx.fillStyle = line.color;
     gCtx.fillText(line.txt, line.location.x, line.location.y);
   });
@@ -106,4 +111,26 @@ function onMarkLine(line) {
   gCtx.fillStyle = "rgba(150, 150, 150, 0.5)";
   gCtx.lineWidth = 2;
   gCtx.fillRect(x, y, textWidth, height + 20);
+}
+
+function onAlignLeft() {
+  let line = getLine();
+  line.location.x = 0 + gCtx.measureText(line.txt).width / 2;
+  renderMeme(gImg);
+}
+
+function onAlignCenter() {
+  let line = getLine();
+  line.location.x = 0 + gElCanvas.width / 2;
+  renderMeme(gImg);
+}
+
+function onAlignRight() {
+  let line = getLine();
+  line.location.x = gElCanvas.width - gCtx.measureText(line.txt).width / 2;
+  renderMeme(gImg);
+}
+
+function onRemoveLine() {
+  removeLine();
 }
