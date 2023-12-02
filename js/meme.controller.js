@@ -10,6 +10,9 @@ function onImgselect(id) {
   const elGallery = document.querySelector(".gallery");
   elGallery.style.display = "none";
 
+  const elSearch = document.querySelector(".search-section");
+  elSearch.style.display = "none";
+
   gElCanvas = document.getElementById("meme-canvas");
   gCtx = gElCanvas.getContext("2d");
   onAddEventListener();
