@@ -17,6 +17,8 @@ function onImgselect(id) {
   gCtx = gElCanvas.getContext("2d");
   onAddEventListener();
 
+  clearMeme(id);
+
   var img = getImgById(id);
   renderMeme(img);
 }

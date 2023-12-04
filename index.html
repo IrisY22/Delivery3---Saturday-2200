@@ -11,137 +11,134 @@
     <title>Meme Generator</title>
   </head>
   <body class="main-layout" onload="onInit()">
-    <header class="main-header full">
-      <div class="flex space-between align-center">
-        <h2 class="logo">memegen</h2>
-        <nav class="main-nav">
-          <ul class="main-nav-list flex row clean-list">
-          <li><a href="#" class="btn" onclick="onOpenGallery()">Gallery</a></li> 
-          <li><a href="#" class="btn"">About</a></li>  
-          </ul>
-        </nav>
+
+    
+<header class="main-header full">
+  <div class="flex space-between align-center">
+      <h2 class="logo">memegen</h2>
+      
+      <div class="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
       </div>
-      <h1></h1>
-    </header>
+
+      <nav class="main-nav">
+          <ul class="main-nav-list flex row clean-list">
+              <li><a href="#" class="btn" onclick="onOpenGallery()">Gallery</a></li> 
+              <li><a href="#" class="btn">About</a></li>  
+          </ul>
+      </nav>
+  </div>
+</header>
+
 
     <section class="search-section full">
-      <input type="search" id="search" placeholder="Enter search keyword 🔍" />
+      <div class="search-container">
+        <input type="search" id="search" placeholder="Enter search keyword" />
+        <button class="search-btn"><i class="fa fa-search"></i></button> 
+      </div>
+      <!-- <div class="categories-container">
+        <ul class="categories-list">
+          <li><a href="#">Category 1</a></li>
+          <li><a href="#">Category 2</a></li>
+          <li><a href="#">Category 3</a></li>
+        </ul>
+      </div> -->
     </section>
+    
 
     <main class="main-page">
-      <div class="gallery"></div>
+        <div class="gallery"></div>
 
       <div class="meme-editor" hidden>
         <section class="canvas-container">
         <canvas
         id="meme-canvas"
         width="500"
-       
         style="outline: 1px solid rgb(128, 0, 0)"
         ></canvas>
-      </section>
 
         <section class="userDesign" >
-          
-          <img class="icon switch-lines" onclick="onSwitchLine()" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon-decrease-font">
-          <img class="icon add-line" onclick="onAddLine()" src="ICONS/add.png" alt="Icon-add-line">
-          <img class="icon trash-btn"  onclick="onRemoveLine()" src="ICONS/trash.png" alt="Icon-trash-line">
-          <img class="icon increase-font-btn"  onclick="onIncreaseFont()" src="ICONS/increase font - icon.png" alt="Icon-increase-font">
-          <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">
-          <img class="icon align-left-btn"  onclick="onAlignLeft()" src="ICONS/align-to-left.png" alt="Icon-align-left-btn">
-          <img class="icon align-center-btn"  onclick="onAlignCenter()" src="ICONS/center-text-alignment.png" alt="Icon-align-center-btn">
-          <img class="icon align-right-btn"  onclick="onAlignRight()" src="ICONS/align-to-right.png" alt="Icon-align-right-btn">
-          <img class="icon stoke-font-btn"  onclick="onStrokeFont()" src="ICONS/text stroke.png" alt="Icon-stroke-font">
 
-          <!-- <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">   -->
-          
-          <!-- <img type="color"  onchange="setTxtColor(this)" class="icon" src="ICONS/paint-board-and-brush.png" alt="Icon-paint-board">
           <input
-          type="color"
-          id="txtColor"
-          
-          onchange="setTxtColor(this)"
-          /> -->
-
-          <img
-  type="color"
-  class="icon paint-board"
-  src="ICONS/paint-board-and-brush.png"
-  alt="Icon-paint-board"
-  onclick="openColorPicker()"
-/>
-
-<input
-  type="color"
-  id="txtColor"
-  onchange="setTxtColor(this)"
-  style="display: none;"
-  />
-        
-        
-        
-        <input
           type="text"
           id="description"
           placeholder="Enter meme description"
           onkeyup="setLineTxt(this)"
         />
+<div class="row-one">
+  <img class="icon switch-lines" onclick="onSwitchLine()" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon-decrease-font">
+  <img class="icon add-line" onclick="onAddLine()" src="ICONS/add.png" alt="Icon-add-line">
+  <img class="icon trash-btn"  onclick="onRemoveLine()" src="ICONS/trash.png" alt="Icon-trash-line">
+</div>
+<div class="row-tow">
+  <img class="icon increase-font-btn"  onclick="onIncreaseFont()" src="ICONS/increase font - icon.png" alt="Icon-increase-font">
+          <img class="icon decrease-font-btn"  onclick="onDecreaseFont()" src="ICONS/decrease font - icon.png" alt="Icon-decrease-font">
+          <img class="icon align-left-btn"  onclick="onAlignLeft()" src="ICONS/align-to-left.png" alt="Icon-align-left-btn">
+          <img class="icon align-center-btn"  onclick="onAlignCenter()" src="ICONS/center-text-alignment.png" alt="Icon-align-center-btn">
+          <img class="icon align-right-btn"  onclick="onAlignRight()" src="ICONS/align-to-right.png" alt="Icon-align-right-btn">
+</div>
+<div class="row-three" >
+  <select class="select-desgin" name="size" id="size">
+    <option value="test">test</option>
+  </select>  <img class="icon stoke-font-btn"  onclick="onStrokeFont()" src="ICONS/text stroke.png" alt="Icon-stroke-font">
+  <img type="color"  class="icon paint-board" src="ICONS/paint-board-and-brush.png" alt="Icon-paint-board"onclick="openColorPicker()"/>
+</div>
 
-        <a
-          href="#"
-          class="download-link"
-          onclick="downloadImg(this)"
-          download="my-img.jpg"
-          >Download</a
-        >
+<input type="color"  id="txtColor" onchange="setTxtColor(this)"  style="display: none;"/>
 
-        <a
-          href="#"
-          class="share-link"
-          onclick="downloadImg(this)"
-          download="my-img.jpg"
-          >Share</a
-        >
+<div class="share-btn-container">
+  <a href="#" class="share-btn" onclick="openDialog()">Share</a>
+</div>
+</div>
+</section>
+
       </section>
+
       </div>
-
+  
     </main>
-
-    <article class="about full">
-      <section class="developer-details">
-        <h3>Iris Yatskaer</h3>
-        <p>A student in the bootcamp of Coding Academy</p>
-      </section>
-      <nav class="footer-nav">
-        <ul class="article-nav-list flex row clean-list">
-          <li>
-            <a href="#">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-brands fa-behance"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </article>
+    <section class="about" id="about-section">
+      <div class="profile">
+          <img src="img/profile-picture.png" alt="Profile Picture" class="profile-picture">
+      </div>
+      <div class="profile-content">
+          <div class="content">
+              <h3 class="profile-title">Iris Yatskaer</h3>
+              <p >A student in the bootcamp of Coding Academy</p>
+          </div>
+          <div class="social-links">
+              <a href="https://www.facebook.com/yourprofile" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://github.com/yourprofile" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+  </section>
+  
 
     <footer class="main-footer full">
       <h3 class="logo">memegen</h3>
       <small>© All Rights Reserved 2023</small>
     </footer>
 
+<div id="dialog" class="dialog" hidden>
+  <div class="dialog-content">
+      <span class="close-btn" onclick="closeDialog()">&times;</span>
+      <div class="dialog-buttons">
+        <button class="dialog-btn" onclick="shareMeme()">Share</button>
+        <button class="dialog-btn" onclick="downloadMeme()">Download</button>
+      </div>
+  
+  </div>
+</div>
     <script src="js/services/meme.util.service.js"></script>
     <script src="js/services/meme.storage.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/hamburger-controller.js"></script>
+    <script src="js/dialog.controller.js"></script>
+
   </body>
 </html>

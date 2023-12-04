@@ -16,6 +16,10 @@ function getMemeById(id) {
   return gMeme;
 }
 
+function getMemeIdx(id) {
+  return gMemes.findIndex((meme) => meme.selectedImgId === id);
+}
+
 function getImgById(id) {
   gImg = gImgs.find((img) => img.id === id);
   return gImg;
@@ -134,6 +138,13 @@ function removeLine() {
     gLine = null;
   }
   renderMeme(gImg);
+}
+
+function clearMeme(id) {
+  var idx = getMemeIdx(id);
+  gMemes.splice(idx, 1, _createMeme(id));
+  var elDescriprion = document.getElementById("description");
+  elDescriprion.value = "";
 }
 // Private functions
 

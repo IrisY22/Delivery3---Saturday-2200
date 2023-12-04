@@ -14,3 +14,97 @@ section input {
 .about {
   text-align: center;
 }
+
+.meme-editor {
+  grid-template-columns: 1fr 1fr;
+}
+
+.userDesign {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.userDesign .icon {
+  width: 40px;
+  height: 40px;
+}
+
+.userDesign #description {
+  grid-row: 1/2;
+  grid-column: 1/5;
+  text-align: center;
+  align-self: center;
+}
+
+.userDesign .switch-lines {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  place-self: center;
+}
+
+.userDesign .add-line {
+  grid-row: 2/3;
+  grid-column: 3/4;
+  place-self: center;
+}
+
+.userDesign .trash-btn {
+  grid-row: 2/3;
+  grid-column: 4/5;
+  place-self: center;
+}
+
+.userDesign .increase-font-btn {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  place-self: center;
+}
+
+.userDesign .decrease-font-btn {
+  grid-row: 3/4;
+  grid-column: 2/3;
+  place-self: center;
+}
+
+.userDesign .paint-board {
+  grid-row: 4/5;
+  grid-column: 5/6;
+  place-self: center;
+}
+
+.userDesign .download-link {
+  grid-row: 5/6;
+  grid-column: -3/-1;
+  place-self: center;
+}
+
+.userDesign .share-link {
+  grid-row: 5/6;
+  grid-column: -6/-4;
+  place-self: center;
+}
+
+.userDesign .align-left-btn {
+  grid-row: 3/4;
+  grid-column: 3/4;
+  place-self: center;
+}
+
+.userDesign .align-center-btn {
+  grid-row: 3/4;
+  grid-column: 4/5;
+  place-self: center;
+}
+
+.userDesign .align-right-btn {
+  grid-row: 3/4;
+  grid-column: 5/6;
+  place-self: center;
+}
+
+.userDesign .stoke-font-btn {
+  grid-row: 4/5;
+  grid-column: 4/5;
+  place-self: center;
+}

@@ -26,4 +26,7 @@ function onOpenGallery() {
 
   const elMemeEditor = document.querySelector(".meme-editor");
   elMemeEditor.style.display = "none";
+
+  const elSearch = document.querySelector(".search-section");
+  elSearch.style.display = "block";
 }

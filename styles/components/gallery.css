@@ -9,3 +9,13 @@
 /* .card-layout .card:first-child {
     padding-top: var(--layout-margin);
 } */
+
+.gallery img {
+  border-radius: 15px;
+}
+
+.gallery img:hover {
+  translate: 20px;
+  transition: 1s;
+  border: 1px solid var(--clrPrimaryBase);
+}

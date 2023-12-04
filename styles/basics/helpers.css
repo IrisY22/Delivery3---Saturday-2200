@@ -25,6 +25,12 @@
   flex-direction: row;
 }
 
+@media (max-width: 768px) {
+  .flex.row {
+    flex-direction: column;
+  }
+}
+
 /* LIST HELPERS */
 
 .clean-list {
