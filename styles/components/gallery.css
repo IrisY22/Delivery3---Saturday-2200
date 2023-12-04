@@ -15,7 +15,8 @@
 }
 
 .gallery img:hover {
-  translate: 20px;
+  /* translate: 20px; */
   transition: 1s;
   border: 1px solid var(--clrPrimaryBase);
+  transform: scale(1.1, 1.1);
 }
