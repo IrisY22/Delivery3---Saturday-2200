@@ -1,17 +1,132 @@
 @media (max-width: 860px) {
+  .main-layout {
+    border: none;
+  }
+
+  .card button {
+    display: none;
+  }
+
+  .main-header {
+    position: relative;
+  }
+
+  .main-nav {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 1s;
+    align-content: end;
+    background: #000;
+    bottom: 0;
+    transform: translateY(100%);
+    left: 0;
+    width: 100%;
+  }
+
+  body.menu-open .main-nav {
+    grid-template-rows: 1fr;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    border: none;
+    min-height: 0px;
+    overflow: hidden;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .main-header .main-nav-list li {
+    border-bottom: 2px solid #212121;
+  }
+
+  .main-header .main-nav-list a {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .main-header .main-nav-list a:hover {
+    box-shadow: none;
+    background-color: var(--clrHeaderClick);
+    color: #000;
+  }
 }
 
 /* SMALL */
 
 @media (min-width: 640px) {
+  .main-layout {
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, var(--s)) minmax(
+        20px,
+        1fr
+      );
+  }
 }
 
 /* MEDIUM */
 
 @media (min-width: 860px) {
+  .main-layout {
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, var(--m)) minmax(
+        20px,
+        1fr
+      );
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .card {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .card p:last-of-type {
+    margin-block-end: 1rem;
+  }
 }
 
 /* LARGE */
 
 @media (min-width: 1040px) {
+  .main-layout {
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, var(--l)) minmax(
+        20px,
+        1fr
+      );
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card p {
+    margin-inline-end: 1em;
+  }
+
+  .card p:first-of-type {
+    margin-block-end: 1rem;
+  }
+
+  .card p:last-of-type {
+    margin-block-end: 3rem;
+  }
+
+  .card button {
+    margin-block-start: auto;
+  }
+
+  .main-header .main-nav-list a {
+    --header-height: 130px;
+  }
 }

@@ -1,110 +1,69 @@
 .search-section {
-  padding-block: 35px;
-  background-color: var(--clrPrimary-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: white;
 }
 
-section input {
-  margin-left: var(--layout-margin);
-  font-size: 0.9em;
-  height: 28px;
+.search-container {
+  display: flex;
+  position: relative;
+}
+
+.search-container input[type="search"] {
+  padding: 5px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-container .search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
   border: none;
-  border-bottom: solid 3px var(--clrPrimary2);
+  background: transparent;
+  cursor: pointer;
+  padding: 5px 10px;
 }
 
-.about {
-  text-align: center;
+.categories-container {
+  display: flex;
 }
 
-.meme-editor {
-  grid-template-columns: 1fr 1fr;
+.categories-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
 }
 
-.userDesign {
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(5, 1fr);
+.categories-list li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
 }
 
-.userDesign .icon {
-  width: 40px;
-  height: 40px;
+.categories-list li a:hover {
+  text-decoration: underline;
 }
 
-.userDesign #description {
-  grid-row: 1/2;
-  grid-column: 1/5;
-  text-align: center;
-  align-self: center;
+.fa-search {
+  font-size: 18px;
+  color: #333;
 }
 
-.userDesign .switch-lines {
-  grid-row: 2/3;
-  grid-column: 2/3;
-  place-self: center;
-}
+@media (max-width: 768px) {
+  .search-section {
+    flex-direction: column;
+  }
 
-.userDesign .add-line {
-  grid-row: 2/3;
-  grid-column: 3/4;
-  place-self: center;
-}
+  .categories-container {
+    margin-top: 10px;
+  }
 
-.userDesign .trash-btn {
-  grid-row: 2/3;
-  grid-column: 4/5;
-  place-self: center;
-}
-
-.userDesign .increase-font-btn {
-  grid-row: 3/4;
-  grid-column: 1/2;
-  place-self: center;
-}
-
-.userDesign .decrease-font-btn {
-  grid-row: 3/4;
-  grid-column: 2/3;
-  place-self: center;
-}
-
-.userDesign .paint-board {
-  grid-row: 4/5;
-  grid-column: 5/6;
-  place-self: center;
-}
-
-.userDesign .download-link {
-  grid-row: 5/6;
-  grid-column: -3/-1;
-  place-self: center;
-}
-
-.userDesign .share-link {
-  grid-row: 5/6;
-  grid-column: -6/-4;
-  place-self: center;
-}
-
-.userDesign .align-left-btn {
-  grid-row: 3/4;
-  grid-column: 3/4;
-  place-self: center;
-}
-
-.userDesign .align-center-btn {
-  grid-row: 3/4;
-  grid-column: 4/5;
-  place-self: center;
-}
-
-.userDesign .align-right-btn {
-  grid-row: 3/4;
-  grid-column: 5/6;
-  place-self: center;
-}
-
-.userDesign .stoke-font-btn {
-  grid-row: 4/5;
-  grid-column: 4/5;
-  place-self: center;
+  .categories-list {
+    flex-direction: flex;
+    font-size: small;
+  }
 }
